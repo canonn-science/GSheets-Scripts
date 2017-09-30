@@ -7,9 +7,9 @@ In your Google Docs sheet, go to Tools -> Script Editor, and paste the contents 
 *Returns coordinates of supplied systems.*
 
 
-@param {string} systems A single system name OR a range of system names (A1:A20). Has to be one dimentional.
-@param {string} separator String used to separate X Y Z coords. Default " / ".
-@return Rows of coordinates.
+- @param {string} systems A single system name OR a range of system names (A1:A20). Has to be one dimentional.
+- @param {string} separator String used to separate X Y Z coords. Default " / ".
+- @return Rows of coordinates.
 
 
 #### Example usage:
@@ -37,10 +37,10 @@ IMPORTANT: Passing range of cells to this function is preferable from using many
 *Returns body data from EDSM API. Available fields passed can be found in EDSM body API:*
 [EDSM Body API](https://www.edsm.net/en/api-system-v1#endPointBodies).
 
-@param {string} system System name ( Sol ).
-@param {string} body Body name ( 5 1 A ).
-@param {string} fields Fields to be returned, separated by comma ",". For a full list of available fields see: https://www.edsm.net/en/api-system-v1#endPointBodies
-@return Columns with defined fields. Field order => column order.
+- @param {string} system System name ( Sol ).
+- @param {string} body Body name ( 5 1 A ).
+- @param {string} fields Fields to be returned, separated by comma ",". For a full list of available fields see: [EDSM Body API](https://www.edsm.net/en/api-system-v1#endPointBodies)
+- @return Columns with defined fields. Field order => column order.
 
 
 #### Fields (from EDSM):
@@ -84,8 +84,9 @@ Get single field from a body:
 Get multiple fields for one body:
 
 ```
-// Notice no spaces between field names
 =edsmGetBody(A2;B2;"type,subType,surfaceTemperature,distanceToArrival")
+
+// Notice no spaces between field names
 
 // Star   B (Blue-White) Star   30995   0
 ```
@@ -96,7 +97,6 @@ Get materials for body:
 =edsmGetBody(A2;B2;"materials")
 
 // 25 columns of alphabetical materials:
-
 ```
 
 Materials order:
