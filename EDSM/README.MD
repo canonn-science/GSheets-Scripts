@@ -17,16 +17,22 @@ In your Google Docs sheet, go to Tools -> Script Editor, and paste the contents 
 Get coordinates for single system:
 ```
 =edsmGetCoords(A2)
+
+// 905.3125 / -271.6875 / -1465.875
 ```
 
 Get coordinates for a range of cells (Recommended):
 ```
 =edsmGetCoords(A2:A10)
+
+// Rows with coordinates
 ```
 
 Using custom separator:
 ```
 =edsmGetCoords(A2; " : ")
+
+// 905.3125 : -271.6875 : -1465.875
 ```
 
 IMPORTANT: Passing range of cells to this function is preferable from using many instances of it.
@@ -66,7 +72,7 @@ IMPORTANT: Passing range of cells to this function is preferable from using many
     argOfPeriapsis                  : 23.460678,
     rotationalPeriod                : 2.2797341579861112,
     rotationalPeriodTidallyLocked   : false,
-    materials						: [array of materials]
+    materials                       : [array of materials]
 }
 ```
 
