@@ -8,57 +8,52 @@
  */
 function edsmGetCoords(systems, customSeparator) {
 
-    var separator = ' / ';
+	var separator = ' / ';
 
-    // override default separator
-    if(typeof customSeparator !== 'undefined') {
-        separator = customSeparator;
-    }
+	// override default separator
+	if (typeof customSeparator !== 'undefined') {
+		separator = customSeparator;
+	}
 
-    // prep data
-    var apiPayload = {
-        showCoordinates: 1
-    }
-  
-  
-    if(typeof systems == 'string') {
-        // Single system.
-        apiPayload['systemName[0]'] = systems;
+	// prep data
+	var apiPayload = {
+		showCoordinates: 1
+	}
 
-    } else if(typeof systems == 'object' && typeof systems.length !== 'undefined') {
-        // It's an array!
+	if (typeof systems == 'string') {
+		// Single system.
+		apiPayload['systemName[0]'] = systems;
 
-        for(var j=0; j<systems.length; j++) {
-            var key = 'systemName['+ j +']';
-            apiPayload[key] = systems[j][0];
-        }
+	} else if (typeof systems == 'object' && typeof systems.length !== 'undefined') {
+		// It's an array!
 
-    } else {
-        // This is something bad
-        return 'Invalid System Range or Value';
-    }
+		for (var j = 0; j < systems.length; j++) {
+			var key = 'systemName[' + j + ']';
+			apiPayload[key] = systems[j][0];
+		}
 
-    var apiOptions = {
-        method: 'post',
-        payload: apiPayload
-    }
+	} else {
+		// This is something bad
+		return 'Invalid System Range or Value';
+	}
 
+	var apiOptions = {
+		method: 'post',
+		payload: apiPayload
+	}
 
-    var response = UrlFetchApp.fetch('https://www.edsm.net/api-v1/systems', apiOptions);
-  var JSONsystems = JSON.parse(response.getContentText());
+	var response = UrlFetchApp.fetch('https://www.edsm.net/api-v1/systems', apiOptions);
+	var JSONsystems = JSON.parse(response.getContentText());
 
-  
-  
-    var output = [];
+	var output = [];
 
-    for(var i=0; i<JSONsystems.length;i++) {
-      
-      
-        var coordString = JSONsystems[i].coords.x +separator+ JSONsystems[i].coords.y +separator+ JSONsystems[i].coords.z;
+	for (var i = 0; i < JSONsystems.length; i++) {
 
-        output.push(coordString);
-    }
+		var coordString = JSONsystems[i].coords.x + separator + JSONsystems[i].coords.y + separator + JSONsystems[i].coords.z;
 
-    return output;    
+		output.push(coordString);
+	}
+
+	return output;
 
 }
